@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KayaKING_Brest - Прокат байдарок и каяков в Бресте</title>
+    <style>
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Шапка */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1500581276021-a4bbcd0050c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        nav {
+            background-color: #2c3e50;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 15px 0;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #3498db;
+        }
+        
+        /* Основные секции */
+        section {
+            padding: 60px 0;
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+        }
+        
+        /* О нас */
+        .about {
+            background-color: #f9f9f9;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 30px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Услуги */
+        .services {
+            text-align: center;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        /* Цены */
+        .pricing {
+            background-color: #f9f9f9;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        /* Галерея */
+        C:\Users\Андрей\Desktop\KayaKING_BREST\images
+
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Контакты */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .contact-info {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .contact-form button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .contact-form button:hover {
+            background: #2980b9;
+        }
+       
+         /* Карты */
+         .services {
+            text-align: center;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        /* Подвал */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #3498db;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка с навигацией -->
+    <header>
+        <div class="container">
+            <h1>Прокат байдарок и каяков в Бресте</h1>
+            <p>Откройте для себя  всю красоту природы с нашими качественными оборудованием и снаряжением</p>
+            <a href="#contact" class="btn">Забронировать сейчас</a>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#services">Услуги</a></li>
+            <li><a href="#pricing">Цены</a></li>
+            <li><a href="#gallery">Галерея</a></li>
+            <li><a href="#contact">Контакты</a>/li>
+            <li><a href="#maps">Карты</a></li>
+        </ul>
+    </nav>
+    
+    <!-- О нас -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>О нашей компании</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Мы - команда энтузиастов водного туризма, которая уже более 5 лет организует прокат байдарок и каяков в Бресте и его окрестностях.</p>
+                    <p>Наша миссия - сделать водный туризм доступным и безопасным для всех желающих. Мы предлагаем только проверенное снаряжение и разрабатываем интересные маршруты разного уровня сложности.</p>
+                    <p>Все наши лодки проходят регулярное техническое обслуживание, а клиенты получают подробный инструктаж перед выходом на воду.</p>
+                </div>
+                <div class="about-image">
+                    <img src="images/23.jpg
+                    "Наша команда">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Услуги -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Наши услуги</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="images/3.jpg"
+                    <h3>Прокат байдарок</h3>
+                    <p>Одноместные и двуместные байдарки для комфортного сплава по рекам и озерам. Идеальный выбор для начинающих и опытных туристов.</p>
+                </div>
+                <div class="service-card">
+                    <img src="images/11.jpg
+                     "Каяки">
+                    <h3>Прокат каяков</h3>
+                    <p>Легкие и маневренные каяки для активного отдыха. Доступны модели для спокойной воды и для более сложных маршрутов.</p>
+                </div>
+                <div class="service-card">
+                    <img src="images/14.jpg
+                    "Дополнительное снаряжение">
+                    <h3>Дополнительное снаряжение</h3>
+                    <p>Спасательные жилеты, водонепроницаемые мешки для вещей, герметичные контейнеры и другое необходимое оборудование.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Цены -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2>Наши цены</h2>
+            <table>
+                <tr>
+                    <th>Услуга</th>
+                    <th>2 час</th>
+                    <th>4 часа</th>
+                    <th>Полный день</th>
+                </tr>
+                <tr>
+                    <td>Байдарка одноместная</td>
+                    <td>50 BYN</td>
+                    <td>90 BYN</td>
+                    <td>140 BYN</td>
+                </tr>
+                <tr>
+                    <td>Байдарка двуместная</td>
+                    <td>50 BYN</td>
+                    <td>90 BYN</td>
+                    <td>140BYN</td>
+                </tr>
+                <tr>
+                    <td>Байдарка треместная</td>
+                    <td>50 BYN</td>
+                    <td>90 BYN</td>
+                    <td>140BYN</td>
+                </tr>
+                <tr>
+                    <td>Спасательный жилет</td>
+                    <td colspan="3">5 BYN (за весь период аренды)</td>
+                </tr>
+            </table>
+            <p style="margin-top: 20px; text-align: center;">* При аренде на группу от 5 человек предоставляется скидка 10%</p>
+        </div>
+    </section>
+    
+    <!-- Галерея -->
+    <<section id="gallery" class="gallery-section py-5">
+        <div class="container">
+            <h2 class="section-title mb-5 text-center">Наши фото</h2>
+            
+            <div class="row justify-content-center g-4">
+              <!-- Изображение 1 -->
+              <div class="col-12 col-md-6 col-lg-4 text-center">
+                <img src="images/12.jpg" 
+                     alt="Речной " 
+                     class="img-fluid rounded shadow-lg gallery-image"
+                     data-aos="zoom-in" 
+                     data-aos-delay="100">
+                </div>
+                
+                <!-- Изображение 2 -->
+                <div class="col-12 col-md-6 col-lg-4 text-center">
+                    <img src="images/17.jpg" 
+                         alt="Речной маршрут" 
+                         class="img-fluid rounded shadow-lg gallery-image"
+                         data-aos="zoom-in" 
+                         data-aos-delay="100">
+                </div>
+                
+                <!-- Изображение 3 -->
+                <div class="col-12 col-md-6 col-lg-4 text-center">
+                    <img src="images/20.jpg" 
+                         alt="Командная прогулка" 
+                         class="img-fluid rounded shadow-lg gallery-image"
+                         data-aos="zoom-in" 
+                         data-aos-delay="200">
+                </div>
+
+                 
+                <!-- Изображение 4 -->
+                 <div class="col-12 col-md-6 col-lg-4 text-center">
+                    <img src="images/13.jpg" 
+                         alt="Командная " 
+                         class="img-fluid rounded shadow-lg gallery-image"
+                         data-aos="zoom-in" 
+                         data-aos-delay="200">
+                </div>
+                <!-- Изображение 5 -->
+                <div class="col-12 col-md-6 col-lg-4 text-center">
+                    <img src="images/15.jpg" 
+                         alt="Команда" 
+                         class="img-fluid rounded shadow-lg gallery-image"
+                         data-aos="zoom-in" 
+                         data-aos-delay="200">
+                         <h2 class="section-title mb-5 text-center">Карты</h2>
+                         <section id="maps" class="maps-section ">
+                            <div class="container">     
+                        </div>
+                         <!--Карта 1 -->   
+                         <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A36c66c589726fef8bbfe450dc4f2648c057f7008113e7c3a7788885df74d0073&amp;width=100%25&amp;height=550&amp;lang=ru_RU&amp;scroll=true"></script>
+            <!-- Контакты -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Контакты</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Как нас найти</h3>
+                    <p><strong>Адрес:</strong> ул. Водопадная, 15, Брест, Беларусь</p>
+                    <p><strong>Телефон:</strong> +375 (29) 123-45-67</p>
+                    <p><strong>Email:</strong> info@kayak-brest.by</p>
+                    <p><strong>Режим работы:</strong> Ежедневно с 9:00 до 18:00</p>
+                </div>           
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <style>
+        .gallery-section {
+            background-color: #f8f9fa;
+        }
+        
+        .gallery-image {
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-image:hover {
+            transform: scale(1.03);
+        }
+        
+        /* Адаптация для мобильных устройств */
+        @media (max-width: 768px) {
+            .gallery-image {
+                max-width: 90%;
+                margin: 10px auto;
+            }
+        }
+    </style>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Контакты -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Контакты</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Как нас найти</h3>
+                    <p><strong>Адрес:</strong>  Брест, Беларусь</p>
+                    <p><strong>Телефон:</strong> +375 (29) 800-51-55</p>
+                    <p><strong>Email:</strong> info@kayak-brest.by</p>
+                    <p><strong>Режим работы:</strong> Ежедневно с 9:00 до 18:00</p>
+                </div>
+                <div class="contact-form">
+                    <h3>Форма бронирования</h3>
+                    <form>
+                        <input type="text" placeholder="Ваше имя" required>
+                        <input type="email" placeholder="Ваш email" required>
+                        <input type="tel" placeholder="Ваш телефон" required>
+                        <input type="date" placeholder="Дата аренды" required>
+                        <textarea placeholder="Ваше сообщение (тип лодки, количество и т.д.)"></textarea>
+                        <button type="submit">Отправить заявку</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-vk"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+            </div>
+            <p>© 2025 KayaKING_Brest. Все права защищены.</p>
+        </div>
+    </footer>
+    
+    <!-- Иконки Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
